@@ -12,7 +12,10 @@ use App\Http\Controllers\RolesController;
 use Illuminate\Support\Facades\Route;
 
 Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
-    Route::get('/', HomeController::class)->name('home');
+    // Route::get('/', HomeController::class)->name('home');
+    Route::get('/', function(){
+        return redirect()->route('login');
+    });
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
 
