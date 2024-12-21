@@ -20,6 +20,7 @@ class Websites extends Model
         'user_id',
         'website_name',
         'website_link',
+        'expired_date',
         'status',
     ];
 

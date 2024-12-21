@@ -9,6 +9,7 @@ export default function Create() {
     const [website_name, setWebsiteName] = useState('');
     const [website_link, setWebsiteLink] = useState('');
     const [website_status, setWebsiteStatus] = useState('');
+    const [website_duration, setWebsiteDuration] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handlerSubmit = (e) => {
@@ -19,6 +20,7 @@ export default function Create() {
             router.post(route('websites.store'), {
                 website_name:website_name,
                 website_link:website_link,
+                expired_date:website_duration,
                 status:website_status,
             },{
                 onFinish: () => {
@@ -56,6 +58,11 @@ export default function Create() {
                             <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Website Link</label>
                             <input type='text' placeholder='Website Link' value={website_link} onChange={(e) => setWebsiteLink(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
                             {errors.website_link && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.website_link}</p>}
+                        </div>
+                        <div className='mb-3'>
+                            <label className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>Durasi Website Aktif</label>
+                            <input type='date' value={website_duration} onChange={(e) => setWebsiteDuration(e.target.value)} className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500' />
+                            {errors.website_duration && <p className='mt-2 text-sm text-red-500 dark:text-red-400'>{errors.website_duration}</p>}
                         </div>
                         {
                             auth.user.access == true &&

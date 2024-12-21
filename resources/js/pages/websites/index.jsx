@@ -73,6 +73,9 @@ export default function Index(data) {
                                 <TableHead onClick={() => handleSort('user_id')}>
                                     <SortIndicator label='User' column='user_id' field={params?.field} direction={params?.direction} />
                                 </TableHead>
+                                <TableHead onClick={() => handleSort('expired_date')}>
+                                    <SortIndicator label='Expired Date' column='expired_date' field={params?.field} direction={params?.direction} />
+                                </TableHead>
                                 <TableHead onClick={() => handleSort('status')}>
                                     <SortIndicator label='Status' column='status' field={params?.field} direction={params?.direction} />
                                 </TableHead>
@@ -90,11 +93,24 @@ export default function Index(data) {
                                                     <TableCell>{item.website_name}</TableCell>
                                                     <TableCell>{item.website_link}</TableCell>
                                                     <TableCell>{item.user.name}</TableCell>
-                                                    <TableCell>{item.status}</TableCell>
+                                                    <TableCell>{item.expired_date}</TableCell>
                                                     <TableCell>
-                                                        <Link className='inline-flex items-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
-                                                            <Icon icon={'IconLogin2'} /> Go Website
-                                                        </Link>
+                                                        {
+                                                            item.status == 'Aktif' ?
+                                                            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{item.status}</span>
+                                                            : item.status == 'Waiting Payment' ?
+                                                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">{item.status}</span>
+                                                            :
+                                                            <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{item.status}</span>
+                                                        }
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {
+                                                            item.status == 'Aktif' &&
+                                                            <Link className='inline-flex items-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
+                                                                <Icon icon={'IconLogin2'} /> Go Website
+                                                            </Link>
+                                                        }
                                                         <Link className='text-gray-900 inline-flex items-center bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>
                                                             <Icon icon={'IconLogin2'} /> Edit
                                                         </Link>
