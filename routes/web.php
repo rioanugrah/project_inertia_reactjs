@@ -19,20 +19,20 @@ Route::domain(parse_url(env('APP_URL'), PHP_URL_HOST))->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['verified'])->name('dashboard');
 
-        Route::controller(ProfileController::class)->group(function () {
-            Route::get('profile', 'index')->middleware(['verified'])->name('profile.index');
-            Route::patch('profile', 'update')->middleware(['verified'])->name('profile.update');
-        });
+        // Route::controller(ProfileController::class)->group(function () {
+        //     Route::get('profile', 'index')->middleware(['verified'])->name('profile.index');
+        //     Route::patch('profile', 'update')->middleware(['verified'])->name('profile.update');
+        // });
 
-        Route::controller(SecurityController::class)->group(function () {
-            Route::get('security', 'index')->middleware(['verified'])->name('security.index');
-            Route::patch('security', 'update')->middleware(['verified'])->name('security.update');
-        });
+        // Route::controller(SecurityController::class)->group(function () {
+        //     Route::get('security', 'index')->middleware(['verified'])->name('security.index');
+        //     Route::patch('security', 'update')->middleware(['verified'])->name('security.update');
+        // });
 
-        Route::controller(DestroyAccountController::class)->group(function () {
-            Route::get('danger', 'index')->middleware(['verified'])->name('danger.index');
-            Route::delete('danger', 'destroy')->middleware(['verified'])->name('danger.destroy');
-        });
+        // Route::controller(DestroyAccountController::class)->group(function () {
+        //     Route::get('danger', 'index')->middleware(['verified'])->name('danger.index');
+        //     Route::delete('danger', 'destroy')->middleware(['verified'])->name('danger.destroy');
+        // });
 
     });
 });

@@ -17,7 +17,7 @@ export default function MenuAdministrator() {
                 </li>
                 <Separator className='!my-4' />
                 <li>
-                    <span className='text-sm'>Aplikasi</span>
+                    <span className='text-sm'>Products</span>
                 </li>
                 <li>
                     <Link href={route('websites.index')} className={classNames(route().current('websites*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
@@ -52,7 +52,7 @@ export default function MenuAdministrator() {
                     </Link>
                 </li>
                 <li>
-                    <Link href='#' className={classNames(route().current('ticket_bromo*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
+                    <Link href={route('users.index')} className={classNames(route().current('users*') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6')}>
                         <Icon icon={'IconChartPie3'} />
                         Users
                     </Link>

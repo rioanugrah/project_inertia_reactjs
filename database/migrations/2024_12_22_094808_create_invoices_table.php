@@ -8,12 +8,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('billings', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->integer('user_id');
-            $table->uuid('invoice_id');
+            $table->string('item');
+            $table->integer('quantity');
             $table->string('amount');
-            $table->string('status',100);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -21,6 +20,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('billings');
+        Schema::dropIfExists('invoices');
     }
 };

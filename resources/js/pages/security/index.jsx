@@ -8,6 +8,7 @@ import { Button } from '@/components/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card';
 import Container from '@/components/container';
 import AuthLayout from '@/Layouts/auth-layout';
+import AppLayout from '@/Layouts/administrator/app-layout';
 
 export default function Index() {
     const passwordInput = useRef();
@@ -40,50 +41,51 @@ export default function Index() {
     };
 
     return (
-        <Container className={'lg:max-w-2xl'}>
-            <Card>
-                <CardHeader>
-                    <CardTitle>Update Password</CardTitle>
-                    <CardDescription>Ensure your account is using a long, random password to stay secure.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <form onSubmit={updatePassword} className='space-y-6'>
-                        <div>
-                            <Label htmlFor='current_password'>Current Password</Label>
+        // <Container className={'lg:max-w-2xl'}>
 
-                            <Input id='current_password' ref={currentPasswordInput} value={data.current_password} onChange={(e) => setData('current_password', e.target.value)} type='password' className='mt-1 block w-full' autoComplete='current-password' />
+        // </Container>
+        <Card>
+            <CardHeader>
+                <CardTitle>Update Password</CardTitle>
+                <CardDescription>Ensure your account is using a long, random password to stay secure.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <form onSubmit={updatePassword} className='space-y-6'>
+                    <div>
+                        <Label htmlFor='current_password'>Current Password</Label>
 
-                            <InputError message={errors.current_password} className='mt-2' />
-                        </div>
+                        <Input id='current_password' ref={currentPasswordInput} value={data.current_password} onChange={(e) => setData('current_password', e.target.value)} type='password' className='mt-1 block w-full' autoComplete='current-password' />
 
-                        <div>
-                            <Label htmlFor='password'>New Password</Label>
+                        <InputError message={errors.current_password} className='mt-2' />
+                    </div>
 
-                            <Input id='password' ref={passwordInput} value={data.password} onChange={(e) => setData('password', e.target.value)} type='password' className='mt-1 block w-full' autoComplete='new-password' />
+                    <div>
+                        <Label htmlFor='password'>New Password</Label>
 
-                            <InputError message={errors.password} className='mt-2' />
-                        </div>
+                        <Input id='password' ref={passwordInput} value={data.password} onChange={(e) => setData('password', e.target.value)} type='password' className='mt-1 block w-full' autoComplete='new-password' />
 
-                        <div>
-                            <Label htmlFor='password_confirmation'>Confirm Password</Label>
+                        <InputError message={errors.password} className='mt-2' />
+                    </div>
 
-                            <Input id='password_confirmation' value={data.password_confirmation} onChange={(e) => setData('password_confirmation', e.target.value)} type='password' className='mt-1 block w-full' autoComplete='new-password' />
+                    <div>
+                        <Label htmlFor='password_confirmation'>Confirm Password</Label>
 
-                            <InputError message={errors.password_confirmation} className='mt-2' />
-                        </div>
+                        <Input id='password_confirmation' value={data.password_confirmation} onChange={(e) => setData('password_confirmation', e.target.value)} type='password' className='mt-1 block w-full' autoComplete='new-password' />
 
-                        <div className='flex items-center gap-4'>
-                            <Button disabled={processing}>Save</Button>
+                        <InputError message={errors.password_confirmation} className='mt-2' />
+                    </div>
 
-                            <Transition show={recentlySuccessful} enter='transition ease-in-out' enterFrom='opacity-0' leave='transition ease-in-out' leaveTo='opacity-0'>
-                                <p className='text-sm text-muted-foreground'>Saved.</p>
-                            </Transition>
-                        </div>
-                    </form>
-                </CardContent>
-            </Card>
-        </Container>
+                    <div className='flex items-center gap-4'>
+                        <Button disabled={processing}>Save</Button>
+
+                        <Transition show={recentlySuccessful} enter='transition ease-in-out' enterFrom='opacity-0' leave='transition ease-in-out' leaveTo='opacity-0'>
+                            <p className='text-sm text-muted-foreground'>Saved.</p>
+                        </Transition>
+                    </div>
+                </form>
+            </CardContent>
+        </Card>
     );
 }
 
-Index.layout = (page) => <AuthLayout title={'Security'} children={page} />;
+Index.layout = (page) => <AppLayout title={'Security'} children={page} />;
